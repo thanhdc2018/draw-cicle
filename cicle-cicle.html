@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw-cicle</title>
+</head>
+<body>
+<canvas id="Canvas" width="500" height="300" style="border:2px solid #d5d5d5;"></canvas>
+<script>
+    let c = document.getElementById("Canvas");
+    this.getArea = function (r) {
+        return "";
+    }
+    let Cicle = function (r){
+        this.rad=r;
+        this.getRadius=function(){
+            return r;
+        }
+        this.getArea=function(){
+            return Math.PI*(r*r);
+        }
+        this.draw= function(){
+            let ctx = c.getContext("2d");
+            //fill background
+            ctx.beginPath();
+            ctx.fillStyle = "#fff706";
+            ctx.beginPath();
+            ctx.arc(100, 75, r, 0, 2 * Math.PI);
+            ctx.closePath();
+            ctx.fill();
+            //fill stroke
+            ctx.lineWidth = "1";
+            ctx.strokeStyle = "#ff0002";
+            ctx.stroke();
+        }
+        this.show= function(){
+            alert("radius = " + this.getRadius(r) + "; area = "+this.getArea(r));
+        }
+    }
+
+    let cicle = new Cicle(50);
+    console.log(cicle);
+    cicle.draw();
+    cicle.show();
+
+
+</script>
+</body>
+</html>
+
