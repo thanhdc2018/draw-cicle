@@ -1,16 +1,31 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Draw-cicle</title>
 </head>
 <body>
+
+    <tr>
+        <td>
+            Let's draw a cicle, insert your radius:
+        </td>
+    </tr>
+    <tr>
+        <td><input id= "num" type="number"></td>
+        <td>
+            <input type = "button" onclick = "draw()" value = "DRAW">
+        </td>
+        <td>
+            <p id="output"></p>
+        </td>
+    </tr>
+
 <canvas id="Canvas" width="500" height="300" style="border:2px solid #d5d5d5;"></canvas>
+
 <script>
-    let c = document.getElementById("Canvas");
-    this.getArea = function (r,color) {
-        return "";
-    }
+    var c = document.getElementById("Canvas");
     let Cicle = function (r){
         this.color=c;
         this.rad=r;
@@ -20,13 +35,13 @@
         this.getArea=function(){
             return Math.PI*(r*r);
         }
-        this.draw= function(){
+        this.draw = function(){
             let ctx = c.getContext("2d");
             //fill background
             ctx.beginPath();
             ctx.fillStyle = "#fff706";
             ctx.beginPath();
-            ctx.arc(100, 75, r, 0, 2 * Math.PI);
+            ctx.arc(100, 75, this.rad, 0, 2 * Math.PI);
             ctx.closePath();
             ctx.fill();
             //fill stroke
@@ -35,16 +50,17 @@
             ctx.stroke();
         }
         this.show= function(){
-            alert("radius = " + this.getRadius(r) + "; area = "+this.getArea(r));
+            let show = "radius = " + this.getRadius() + "; area = "+this.getArea();
+            document.getElementById("output").innerHTML = show;
         }
     }
-
-    let cicle = new Cicle(50);
-    console.log(cicle);
-    cicle.draw();
-    cicle.show();
-
-
+    function draw(){
+        let r = document.getElementById("num");
+        let ra = parseInt(r.value);
+        let cicle = new Cicle(ra);
+        cicle.draw();
+        cicle.show();
+    }
 </script>
 </body>
 </html>
